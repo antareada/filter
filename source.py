@@ -3,6 +3,7 @@ import re
 
 xml = parse('messenger_oldictionary.xml')
 regsInclude = []
+regsExclude = []
 
 # Взять значения по тегу и поместить в список
 def getTag(name, listReg):
@@ -37,6 +38,6 @@ text = text.split()
 
 getTag('badWordSet', regsInclude)
 getTag('include', regsInclude)
-getTag('exclude', regsInclude)
+getTag('exclude', regsExclude)
 
 searchRegs(regsInclude, text)
