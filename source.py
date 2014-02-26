@@ -22,9 +22,9 @@ def searchRegText(reg, text):
 	if match:
 		print(match.group())
 
-# Перебор всех регулярок
-def searchRegs(regsInclude, text):
-	for reg in regsInclude:
+# Перебор всех регулярок из списка
+def searchRegs(regs, text):
+	for reg in regs:
 		for word in text:
 			searchRegText(reg, word)
 
@@ -33,11 +33,18 @@ f = open('text.txt', 'r')
 # Точно текст
 text = f.read()
 text = text.lower()
+text = text.replace('.', '')
+print(text)
+
 # В список по словам текст
 text = text.split()
 
+
+
+print('То, что забанит:')
 getTag('badWordSet', regsInclude)
 getTag('include', regsInclude)
+print('То, что не забанит как исключение:')
 getTag('exclude', regsExclude)
 
 searchRegs(regsInclude, text)
