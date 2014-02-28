@@ -21,6 +21,8 @@ def searchRegText(reg, text):
 	match = re.match(reg, text)
 	if match:
 		print(match.group())
+		# Пишет в файл
+		print(match.group(), file=fResult)
 
 # Перебор всех регулярок из списка
 def searchRegs(regs, text):
@@ -29,6 +31,7 @@ def searchRegs(regs, text):
 			searchRegText(reg, word)
 
 f = open('text.txt', 'r')
+fResult = open('result.txt', 'w')
 
 # Точно текст
 text = f.read()
